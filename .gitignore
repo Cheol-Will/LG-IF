@@ -1,0 +1,9 @@
+.env
+*__pycache__
+results
+exp_db
+.vscode
+checkpoints
+exp_db
+docker_cli.txt
+data/

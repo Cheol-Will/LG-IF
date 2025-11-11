@@ -1,0 +1,34 @@
+exp:
+  best_cfg_path: ./configs/hpo_best
+  checkpoint_path: ./checkpoints/hpo
+  result_path: ./results/hpo
+
+study:
+  direction: maximize
+  storage: "sqlite:///exp_db/retab.sqlite3"
+  n_trials: 1000
+
+data_parameters:
+  serialize: False
+  batch_size: 64
+
+model_parameters:
+  kernel: rbf
+  contamination: 0.1
+
+hyperparameters:
+  data_parameters:
+    scaling_type: 
+      type: categorical
+      grid: [standard, minmax]
+    cat_encoding:
+      type: categorical
+      grid: [int, onehot]
+
+  model_parameters:  
+    nu: 
+      type: categorical
+      grid: [0.1, 0.2, 0.3, 0.4, 0.5]
+    contamination: 
+      type: categorical
+      grid: [0.1, 0.2, 0.3]

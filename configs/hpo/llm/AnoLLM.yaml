@@ -1,0 +1,29 @@
+exp:
+  best_cfg_path: ./configs/hpo_best
+  checkpoint_path: ./checkpoints/hpo
+  result_path: ./results/hpo
+
+study:
+  direction: maximize
+  storage: "sqlite:///exp_db/retab.sqlite3"
+  n_trials: 1000
+
+data_parameters:
+  serialize: True
+  batch_size: 8
+  serialize_n_buckets: 10
+
+model_parameters:
+  epochs: 100
+  n_permutations: 21
+  
+hyperparameters:
+  # data_parameters:
+  #   serialize_normalize_method:
+  #     type: categorical
+  #     grid: [raw, equal_width, standard]
+  model_parameters:
+    model:
+      type: categorical
+      grid: [smolLM, smolLM360]
+

@@ -1,0 +1,15 @@
+exp:
+  device: cuda
+  checkpoint_path: ./checkpoints/default
+  result_path: ./results/default
+
+data_parameters:
+  serialize: True
+  serialize_normalize_method: "raw"
+  serialize_n_buckets: 10
+
+model_parameters:
+  llm_model: "gpt-4o"
+  inference_batch_size: 15
+  max_retry: 3
+  prompt_type: "D"

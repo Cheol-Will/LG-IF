@@ -1,0 +1,21 @@
+exp:
+  runs: 5
+  device: cuda
+  checkpoint_path: ./checkpoints/default
+  result_path: ./results/default
+
+data_parameters:
+  serialize: False
+  scaling_type: standard
+  cat_encoding: onehot
+  batch_size: 64
+
+model_parameters:
+  model_name: "lgif"
+  llm_model: "gpt-4o"
+  inference_batch_size: 15
+  max_retry: 3
+  tree_parameters:
+    max_features: 1.0
+    n_estimators: 100
+    contamination: 0.1

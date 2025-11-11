@@ -1,0 +1,18 @@
+data_parameters:
+  batch_size: 64
+  cat_encoding: onehot
+  scaling_type: standard
+  serialize: false
+exp:
+  best_cfg_path: ./configs/hpo_best
+  checkpoint_path: ./checkpoints/hpo
+  result_path: ./results/hpo
+model_parameters:
+  contamination: 0.05
+  n_components: 10
+  n_selected_components: null
+  random_state: 42
+  standardization: true
+  svd_solver: full
+  weighted: false
+  whiten: true

@@ -1,0 +1,15 @@
+exp:
+  device: cuda
+  checkpoint_path: ./checkpoints/default
+  result_path: ./results/default
+
+data_parameters:
+  batch_size: 128
+  serialize: True
+  serialize_normalize_method: "standard"
+  serialize_n_buckets: 10
+
+model_parameters:
+  epochs: 500
+  model: smolLM
+  n_permutations: 21
