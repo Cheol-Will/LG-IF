@@ -1,8 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ml_model_list=(OCSVM IForest KNN LOF PCA)
-data=(automobile backdoor campaign cardiotocography census churn cirrhosis covertype credit equip gallstone glass glioma quasar seismic stroke vertebral wbc wine yeast)
+# ml_model_list=(OCSVM IForest KNN LOF PCA) # PCA might cause some error if # features is small.
+ml_model_list=(OCSVM IForest KNN LOF)
+data_list=(automobile backdoor campaign cardiotocography census churn cirrhosis covertype credit equip gallstone glass glioma quasar seismic stroke vertebral wbc wine yeast)
 
 for data in "${data_list[@]}"; do
     for model in "${ml_model_list[@]}"; do

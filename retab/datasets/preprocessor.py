@@ -71,10 +71,11 @@ class Preprocessor:
         # Our contribution
         self.categorical_columns, self.continuous_columns = infer_column_types(self.X)
         
-        print("After inferring column types")
-        print(self.categorical_columns)
-        print(self.continuous_columns)
-        print()
+        # print("Debug", '-'*30)
+        # print("After inferring column types")
+        # print(self.categorical_columns)
+        # print(self.continuous_columns)
+        # print()
 
         # Save original data before any transformation
         self.X_original = self.X.copy()  
@@ -112,9 +113,11 @@ class Preprocessor:
             self.X, self.cat_encoding, self.categorical_columns, self.continuous_columns
         )
 
-        print("After computing feature indices")
-        print(self.cat_idxs)
-        print(self.con_idxs)
+        # print("Debug", '-'*30)
+        # print("After computing feature indices")
+        # print(self.cat_idxs)
+        # print(self.con_idxs)
+        # print()
 
         if self.cat_encoding == "onehot":
             self._encode_onehot()
@@ -127,8 +130,9 @@ class Preprocessor:
         else:
             raise NotImplementedError(f"Unsupported cat_encoding: {self.cat_encoding}")
 
-        print("After One-hot Encoding")
-        print(self.X.iloc[:2, :])
+        # print("Debug", '-'*30)
+        # print("After One-hot Encoding")
+        # print(self.X.iloc[:2, :])
 
         nan_mask = self.X.notnull().astype(int)
         X_train, y_train = split_data(self.X, self.y, nan_mask, train_idx)
@@ -174,12 +178,18 @@ class Preprocessor:
         ohe_arr = ohe.fit_transform(self.X[self.categorical_columns])
         ohe_cols = ohe.get_feature_names_out(self.categorical_columns)
         df_ohe = pd.DataFrame(ohe_arr, columns=ohe_cols, index=self.X.index)
-        print("sample data for ohe data")
-        print(df_ohe.iloc[:2, :])
+        # print("Debug", '-'*30)
+        # print("sample data for ohe data")
+        # print()
+        # print(df_ohe.iloc[:2, :])
+        
         self.X = pd.concat(
             [self.X.drop(columns=self.categorical_columns), df_ohe], axis=1
         )
-        print(self.X.iloc[:2, :])
+        # print("Debug", '-'*30)
+        # print(self.X.iloc[:2, :])
+        # print()
+        
         self.continuous_columns = self.X.columns.tolist()
         self.categorical_columns = []
 
@@ -276,9 +286,11 @@ class Preprocessor:
 
     def _compute_scaling_stats(self):
         """Compute scaling statistics for continuous features."""
-        print("before preprocessing")
-        print(self.X_train["data"][:2, :])
-        print(self.X_train["data"][:2, self.con_idxs])
+        # print("Debug", '-'*30)
+        # print("before preprocessing")
+        # print(self.X_train["data"][:2, :])
+        # print()
+        # print(self.X_train["data"][:2, self.con_idxs])
 
         # data = self.X_train["data"][:, self.con_idxs].astype(float)
         data = self.X_train["data"][:, self.con_idxs]
@@ -337,11 +349,12 @@ class Preprocessor:
         X_data, X_mask = X["data"], X["mask"]
         y = y["data"]
 
-        print("After processed features:")
-        print(f"X_data: {X_data[:2, :]}")
-        print(f"X_mask: {X_data[:2, :]}")
-
-        print(self.con_idxs)
+        # print("Debug", '-'*30)
+        # print("After processed features:")
+        # print(f"X_data: {X_data[:2, :]}")
+        # print(f"X_mask: {X_data[:2, :]}")
+        # print()
+        # print(self.con_idxs)
         # Bug: When self.X is processed, self.con_idxs becomes [0, 1, 2, ...], and cat_idxs is empty.
 
         # numerical value
