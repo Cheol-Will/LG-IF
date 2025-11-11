@@ -7,3 +7,5 @@ checkpoints
 exp_db
 docker_cli.txt
 data/
+
+download_dataset.py
