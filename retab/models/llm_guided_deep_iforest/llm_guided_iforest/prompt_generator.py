@@ -7,7 +7,8 @@ from typing import Dict, Any
 
 class LGIFPromptGenerator:
     """
-    LLM-guided IForest Prompt Generator following DELTA, ReTabAD, and AutoAnoEval.
+    LLM-guided IForest Prompt Generator following DELTA.
+    
     
     Save prompts    
     """

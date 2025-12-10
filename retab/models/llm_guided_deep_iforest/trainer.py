@@ -33,8 +33,9 @@ class Trainer(BaseTrainer):
 
         self.model_params = model_params
         self.model = LLMGuidedIForest(
-            tree_params=getattr(model_params, 'tree_params', {}), # Note that we need tree parameters.
-            model_name=getattr(model_params, 'llm_model', 'gpt-4o'),
+            tree_params=getattr(model_params, 'tree_params', ''), # Note that we need tree parameters.
+            model_name=getattr(model_params, 'llm_model', 'gemini-2.5-pro'),
+            # batch_size=getattr(model_params, 'inference_batch_size', data_params.batch_size),
             max_retry=getattr(model_params, 'max_retry', 3),
         )
 

@@ -1,0 +1,15 @@
+data_parameters:
+  batch_size: 64
+  cat_encoding: onehot
+  scaling_type: standard
+  serialize: false
+exp:
+  best_cfg_path: ./configs/hpo_best
+  checkpoint_path: ./checkpoints/hpo
+  result_path: ./results/hpo
+model_parameters:
+  act: Tanh
+  bias: false
+  hidden_dims: 512,256,128
+  lr: 0.005
+  rep_dim: 128

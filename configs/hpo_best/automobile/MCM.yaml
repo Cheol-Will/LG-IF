@@ -1,0 +1,20 @@
+data_parameters:
+  batch_size: 512
+  cat_encoding: int
+  scaling_type: standard
+  serialize: false
+exp:
+  best_cfg_path: ./configs/hpo_best
+  checkpoint_path: ./checkpoints/hpo
+  result_path: ./results/hpo
+model_parameters:
+  de_nlayers: 3
+  en_nlayers: 3
+  epochs: 200
+  hidden_dim: 256
+  lambda: 5
+  learning_rate: 0.05
+  mask_nlayers: 3
+  mask_num: 10
+  sche_gamma: 0.98
+  z_dim: 128

@@ -1,0 +1,19 @@
+data_parameters:
+  batch_size: 64
+  cat_encoding: onehot
+  scaling_type: standard
+  serialize: false
+exp:
+  best_cfg_path: ./configs/hpo_best
+  checkpoint_path: ./checkpoints/hpo
+  result_path: ./results/hpo
+model_parameters:
+  act: ReLU
+  alpha: 0.5
+  bias: false
+  hidden_dim: 16
+  lr: 0.0005
+  margin: 0.5
+  n_layers: 7
+  n_trans: 128
+  trans_dim: 16

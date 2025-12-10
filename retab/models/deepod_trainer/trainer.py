@@ -1,3 +1,5 @@
+import os
+import json
 import torch
 import pickle
 
@@ -33,16 +35,20 @@ class Trainer(BaseTrainer):
             self.model = model_obj(**model_params)
         else:
             self.model = model_obj(**model_params)
+        self.json_path = os.path.join(meta_info.checkpoint_path, meta_info.data_name, meta_info.model_name, meta_info.exp_id, f'{meta_info.seed}.json')
+        os.makedirs(os.path.dirname(self.json_path), exist_ok=True)
 
     def train(self):
         self.model.fit(X=self.X_train_cont)
-        self.save()
+        # self.save()
 
     @torch.no_grad()
     def evaluate(self):
-        self.load()
+        # self.load()
         ascs = self.model.decision_function(self.X_test_cont)
         metrics = get_summary_metrics(y_true=self.y_test, y_pred=ascs)
+        with open(self.json_path, 'w') as f:
+            json.dump(metrics, f, indent=4)
         return metrics
     
     def save(self):

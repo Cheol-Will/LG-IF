@@ -106,6 +106,11 @@ def main():
     # parameters for the model
     cfg = load_config(meta_info.cfg_file)
 
+    result_path = os.path.join(cfg.exp.result_path, args.data_name, args.model_name, "result.json")
+    if os.path.exists(result_path):
+        print(f"\nSkip experiment {result_path} since the result already exists.\n")
+        return
+    
     # set search space
     search_space = {
         **{k: v['grid'] for k, v in cfg.hyperparameters.data_parameters.items()},
@@ -117,6 +122,7 @@ def main():
         storage=cfg.study.storage,
         study_name=study_name,
         sampler=optuna.samplers.GridSampler(search_space),     
+        load_if_exists=True,
     )
     
     study.optimize(lambda trial: objective(trial, cfg, meta_info), n_trials=cfg.study.n_trials)

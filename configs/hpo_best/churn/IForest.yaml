@@ -1,0 +1,16 @@
+data_parameters:
+  batch_size: 64
+  cat_encoding: int
+  scaling_type: standard
+  serialize: false
+exp:
+  best_cfg_path: ./configs/hpo_best
+  checkpoint_path: ./checkpoints/hpo
+  result_path: ./results/hpo
+model_parameters:
+  bootstrap: false
+  contamination: 0.2
+  max_features: 1.0
+  max_samples: auto
+  n_estimators: 100
+  random_state: 42

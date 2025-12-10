@@ -1,0 +1,13 @@
+data_parameters:
+  batch_size: 64
+  cat_encoding: onehot
+  scaling_type: minmax
+  serialize: false
+exp:
+  best_cfg_path: ./configs/hpo_best
+  checkpoint_path: ./checkpoints/hpo
+  result_path: ./results/hpo
+model_parameters:
+  contamination: 0.1
+  kernel: rbf
+  nu: 0.2

@@ -1,0 +1,17 @@
+data_parameters:
+  batch_size: 64
+  cat_encoding: int
+  scaling_type: standard
+  serialize: false
+exp:
+  best_cfg_path: ./configs/hpo_best
+  checkpoint_path: ./checkpoints/hpo
+  result_path: ./results/hpo
+model_parameters:
+  act: Tanh
+  bias: false
+  hidden_dims: 128,64
+  init_score_ensemble_size: 75
+  init_score_subsample_size: 16
+  lr: 0.001
+  rep_dim: 32
